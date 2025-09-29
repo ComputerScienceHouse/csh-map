@@ -11,11 +11,9 @@ LDAP_BIND_DN = 'krbprincipalname=map/os-router-nrh.csh.rit.edu@CSH.RIT.EDU,cn=se
 LDAP_BIND_PW = ''
 
 # OpenID Connect SSO config
-OIDC_PROVIDER_METADATA = {
-    "issuer": 'https://sso.csh.rit.edu/auth/realms/csh',
-    "client_id": 'map',
-    "client_secret": '',
-    "post_logout_redirect_uris": ['localhost:6969/logout']
-}
+MAP_OIDC_ISSUER='https://sso.csh.rit.edu/auth/realms/csh'
+MAP_OIDC_CLIENT_ID='map'
+MAP_OIDC_CLIENT_SECRET=''
+MAP_OIDC_LOGOUT_REDIRECT_URIS=['localhost:6969/logout']
 
 PLUG_SUPPORT = False
