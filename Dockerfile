@@ -10,15 +10,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libsasl2-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Configure OpenLDAP to use the system trusted CA Store
-RUN mkdir -p /etc/ldap && echo "TLS_CACERT /etc/ssl/certs/ca-certificates.crt" >> /etc/ldap/ldap.conf
-
 # Add application user
-RUN groupadd -r map && useradd --no-log-init -r -g map map
+RUN adduser --system --group map && \
+    mkdir -p /opt/map
 
 # Add files and set permissions
 ADD . /opt/map
-RUN chown -R map:map /opt/map
+RUN chown -R map /opt/map
 WORKDIR /opt/map
 
 # Install python dependencies
@@ -31,4 +29,4 @@ USER map
 EXPOSE 8080
 
 # Run application with Gunicorn
-CMD gunicorn --workers=2 --bind ${MAP_SERVER_IP:-0.0.0.0}:${MAP_SERVER_PORT:-8080} app
+CMD ["gunicorn", "--workers=2", "--bind", "0.0.0.0:8080", "app"]
