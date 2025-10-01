@@ -36,12 +36,28 @@ function updateResidents(roomNum) {
         case "3058":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Lounge");
-            updateModalBody("No residents.");
+            var mpas = groups['mpa'];
+            var mpaHTML = "";
+            for (var i = 0; i < mpas.length; i++) {
+                mpaHTML += mpas[i];
+              if (i < mpas.length - 1) {
+                mpaHTML += "<br>"
+              }
+            }
+            updateModalBody(mpaHTML);
             break;
         case "3098":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("User Center");
-            updateModalBody("No residents.");
+            var devcades = groups['devcade'];
+            var devcadeHTML = "";
+            for (var i = 0; i < devcades.length; i++) {
+                devcadeHTML += devcades[i];
+                if (i < devcades.length - 1) {
+                    devcadeHTML += "<br>"
+                }
+            }
+            updateModalBody(devcadeHTML);
             break;
         case "3034":
         case "3048":
@@ -60,18 +76,26 @@ function updateResidents(roomNum) {
         case "3021":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Project Room");
-            updateModalBody(groups['eboard']['Improvements']);
+            threedeeayys = groups['3da']
+            var projectHTML = "";
+            projectHTML += groups['eboard']['Improvements'] += "<br>";
+            for (var i = 0; i < threedeeayys.length; i++) {
+              projectHTML += threedeeayys[i];
+              if (i < threedeeayys.length - 1) {
+                projectHTML += "<br>"
+              }
+            }
+            updateModalBody(projectHTML);
             break;
         case "3017":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Research Room");
-            var threedeeayys = groups['3da'];
-            var threedeeayyHTML = "";
-            for (var i = 0; i < threedeeayys.length; i++) {
-              threedeeayyHTML += threedeeayys[i];
-              if (i < threedeeayys.length - 1) {
-                threedeeayyHTML += "<br>"
-              }
+            let rnd = groups['eboard']['R&D'];
+            if (rnd[1]) {
+                // dual directorship
+                updateModalBody(rnd[0] + '<br>' + rnd[1]);
+            } else {
+                updateModalBody(rnd[0]);
             }
             updateModalBody(threedeeayyHTML);
             break;
@@ -83,7 +107,18 @@ function updateResidents(roomNum) {
         case "3032":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Eboard Closet");
-            updateModalBody(groups['eboard']['Financial']);
+            var eboard = groups['eboard']
+            var eboardHTML = "";
+            for (var pos in eboard) {
+                var directors = eboard[pos];
+                for (var i = 0; i < directors.length; i++) {
+                    if (eboardHTML !== "") {
+                        eboardHTML += "<br>";
+                    }
+                    eboardHTML += directors[i];
+                }
+            }
+            updateModalBody(eboardHTML);
             break;
         case "3028":
             $modalTitle.css('textTransform', 'capitalize');
@@ -129,7 +164,7 @@ function updateResidents(roomNum) {
         case "3082":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Kitchen");
-            updateModalBody("Dyllon Chowdhury");
+            updateModalBody(groups['eboard']['Improvements']);
             break;
         case "F%203961":
         case "3961":
