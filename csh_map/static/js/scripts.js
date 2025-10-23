@@ -78,7 +78,7 @@ function updateResidents(roomNum) {
             updateModalTitle("Project Room");
             threedeeayys = groups['3da']
             var projectHTML = "";
-            projectHTML += groups['eboard']['Improvements'] += "<br>";
+            projectHTML += groups['eboard']['Improvements'] + "<br>";
             for (var i = 0; i < threedeeayys.length; i++) {
               projectHTML += threedeeayys[i];
               if (i < threedeeayys.length - 1) {
